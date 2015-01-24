@@ -48,6 +48,7 @@ module.exports.assets = function (opts) {
         _ = require('lodash'),
         concat = require('gulp-concat'),
         gulpif = require('gulp-if'),
+        sourcemaps = require('gulp-sourcemaps'),
         types = opts.types || ['css', 'js'],
         isRelativeUrl = require('is-relative-url'),
         vfs = require('vinyl-fs'),
@@ -114,6 +115,7 @@ module.exports.assets = function (opts) {
                 // Add assets to the stream
                 // If noconcat option is false, concat the files first.
                 src
+                    .pipe(gulpif(opts.sourcemaps, sourcemaps.init()))
                     .pipe(gulpif(!opts.noconcat, concat(name)))
                     .pipe(through.obj(function (newFile, enc, callback) {
                         this.push(newFile);

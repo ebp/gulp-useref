@@ -117,6 +117,13 @@ Default: `false`
 
 Skip concatenation and add all assets to the stream instead.
 
+#### options.sourcemaps
+
+Type: `Boolean`  
+Default: `false`  
+
+Initialize sourcemaps for [gulp-sourcemaps](https://github.com/floridoo/gulp-sourcemaps) support.
+
 ### stream.restore()
 
 Brings back the previously filtered out HTML files.
